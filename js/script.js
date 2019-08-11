@@ -49,6 +49,50 @@ console.log(targetArticle)
 targetArticle.classList.add('active');
 }
 
+
+
+{
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+function generateTitleLinks(){
+
+  /* [DONE] remove contents of titleList */
+
+  const titleList = document.querySelector(optTitleListSelector);
+  titleList.innerHTML = '';
+
+  /* [DONE] for each article */
+
+  let html = '';
+  const articles = document.querySelectorAll(optArticleSelector)
+  for(let article of articles) {
+
+    /* [DONE] get the article id */
+
+    const articleId = article.getAttribute('id')
+
+    /* [DONE] find the title element and get the title */
+
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+    /* [DONE] create HTML of the link */
+
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log(linkHTML)
+
+    /* [DONE] insert link into titleList */
+
+    html = html + linkHTML;
+  }
+  titleList.innerHTML = html;
+  console.log(html)
+}
+
+generateTitleLinks();
+}
+
 const links = document.querySelectorAll('.titles a');
 
 for(let link of links){
